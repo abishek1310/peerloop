@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PeerLoop — Cursor Boston Cohort 2</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span class="logo">🔁</span>
+      <div>
+        <h1>PeerLoop</h1>
+        <p class="tagline">Discord is where we talk. This is where our weekly ships get reviewed, celebrated, and digested back.</p>
+      </div>
+    </div>
+    <div class="identity">
+      <label for="myName">You are</label>
+      <input id="myName" type="text" placeholder="your @handle" maxlength="60" />
+    </div>
+  </header>
+
+  <nav id="tabs">
+    <button class="tab active" data-tab="queue">📥 Review Queue</button>
+    <button class="tab" data-tab="ships">🚢 This Week's Ships</button>
+    <button class="tab" data-tab="kudos">🎉 Kudos</button>
+    <button class="tab" data-tab="digest">📰 Weekly Digest</button>
+  </nav>
+
+  <main>
+    <!-- Review Queue -->
+    <section id="tab-queue" class="panel active">
+      <p class="hint">Submissions with the fewest reviews float to the top — so every ship gets eyes, not just the loud ones. Claim one, try the live URL, leave structured feedback.</p>
+      <div id="queueList" class="cards"></div>
+    </section>
+
+    <!-- Ships -->
+    <section id="tab-ships" class="panel">
+      <div class="panel-head">
+        <h2>Ship your week</h2>
+        <p class="hint">One submission per participant per week. Post yours so the cohort can review it before the voting call.</p>
+      </div>
+      <form id="shipForm" class="form-grid">
+        <input name="title" placeholder="Project title *" required maxlength="120" />
+        <select name="week" id="weekSelect"></select>
+        <input name="liveUrl" placeholder="Live URL" type="url" />
+        <input name="repoUrl" placeholder="Repo URL" type="url" />
+        <input name="loomUrl" placeholder="Loom URL" type="url" />
+        <textarea name="blurb" placeholder="One-paragraph pitch: what's your wedge?" maxlength="500"></textarea>
+        <button type="submit" class="primary">Ship it 🚢</button>
+      </form>
+      <div id="shipsList" class="cards"></div>
+    </section>
+
+    <!-- Kudos -->
+    <section id="tab-kudos" class="panel">
+      <div class="panel-head">
+        <h2>Give kudos</h2>
+        <p class="hint">Someone unblocked you, shipped something great, or showed up for the cohort? Say it here — it lands in the weekly digest.</p>
+      </div>
+      <form id="kudosForm" class="form-row">
+        <select name="emoji">
+          <option>🎉</option><option>🔥</option><option>🙌</option><option>🧠</option><option>🛟</option><option>⚡</option>
+        </select>
+        <input name="to" placeholder="@who *" required maxlength="60" />
+        <input name="note" placeholder="for what? *" required maxlength="300" class="grow" />
+        <button type="submit" class="primary">Send</button>
+      </form>
+      <div class="split">
+        <div>
+          <h3>Latest kudos</h3>
+          <div id="kudosList" class="cards"></div>
+        </div>
+        <div>
+          <h3>Leaderboard</h3>
+          <ol id="kudosBoard" class="board"></ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- Digest -->
+    <section id="tab-digest" class="panel">
+      <div class="panel-head">
+        <h2>Weekly digest</h2>
+        <p class="hint">Auto-generated from this week's activity. Hit copy and paste it straight into Discord — the loop closes itself.</p>
+        <button id="copyDigest" class="primary">📋 Copy as Markdown</button>
+      </div>
+      <pre id="digestPreview"></pre>
+    </section>
+  </main>
+
+  <!-- review modal -->
+  <div id="modal" class="modal hidden">
+    <div class="modal-box">
+      <h3 id="modalTitle">Review</h3>
+      <form id="reviewForm">
+        <label>What works 💪</label>
+        <textarea name="works" required maxlength="1000" placeholder="Be specific — what should they keep?"></textarea>
+        <label>What to improve 🔧</label>
+        <textarea name="improve" required maxlength="1000" placeholder="One concrete thing to change before the voting call."></textarea>
+        <div class="modal-actions">
+          <button type="button" id="modalCancel">Cancel</button>
+          <button type="submit" class="primary">Submit review</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <footer>Built for the Cursor Boston Summer Cohort · zero-dependency Node · <a href="https://github.com/abishek1310" target="_blank">@abishek1310</a></footer>
+  <script src="/app.js"></script>
+</body>
+</html>

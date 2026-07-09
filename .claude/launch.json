@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "peerloop",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["C:\\Users\\abish\\Downloads\\peerloop\\server.js"],
+      "port": 3000
+    }
+  ]
+}
