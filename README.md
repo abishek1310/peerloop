@@ -4,6 +4,8 @@
 
 Built for the Cursor Boston Summer Cohort (Cohort 2, Week 2 — Communications Build) by [@abishek1310](https://github.com/abishek1310).
 
+**Live:** https://peerloop.onrender.com
+
 ## The wedge
 
 Discord already covers chat, voice, and presence for the cohort. What it *doesn't* deliver for a 100-person cohort that ships weekly:
